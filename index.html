@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme generator</title>
+</head>
+
+<body onload="onInit()">
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="flex align-center">
+            <h1 class="logo">meme generator</h1>
+            <nav class="main-nav">
+                <ul class="clean-list flex align-center justify-center">
+                    <li>
+                        <button onclick="onGoToGallery()">Gallery</button>
+                    </li>
+                    <li>
+                        <button>My Mems</button>
+                    </li>
+                </ul>
+                </ul>
+            </nav>
+            <button class="btn-menu flex align-center justify-center burger" onclick="toggleMenu()">☰</button>
+        </header>
+        <!-- Gallery -->
+        <section class="gallery">
+            <div class="filters">
+
+                <input class="txt-input" type="text" placeholder="Search">
+                <div class="flex justify-center align-center">
+                    <div class="keywords flex justify-center">
+                        <button>Funny</button>
+                        <button>Animal</button>
+                        <button>Men</button>
+                        <button>Women</button>
+                        <button>Comic</button>
+                        <button>Smile</button>
+                    </div>
+                    <button class="more-btn">More</button>
+                </div>
+            </div>
+            <div class="images">
+            </div>
+        </section>
+    </div>
+
+    <!-- Editor -->
+    <section class="editor hide align-center">
+        <div class="canvas-container">
+            <canvas width="480px" height="480px" onclick="onCanvasClicked(event)" class="canvas"></canvas>
+        </div>
+        <div class="edit-options justify-center">
+            <input class="txt-input input" oninput="onSetTxt(this.value)" type="text" placeholder="Write something...">
+            <div class="general-controls-container flex justify-center align-center">
+                <button class="switch-line-btn flex align-center small-btn" onclick="onSwitchLine()">
+                    <img src="design/icons/arrow-up.png" alt="">
+                    <img src="design/icons/arrow-down.png" alt="">
+                </button>
+                <button class="clear-input-btn small-btn flex align-center justify-center" onclick="onAddLine()">
+                    <img src="design/icons/plus.png" alt=""></button>
+                <button class="add-line-btn small-btn flex align-center justify-center" onclick="onDeleteLine()">
+                    <img src="design/icons/trash.png" alt="">
+                </button>
+            </div>
+            <div class="font-settings-container flex justify-center space-between">
+                <div class="flex justify-center align-center">
+                    <button class="font-settings-btn small-btn" onclick="onSetFontSize(10)">
+                        <img src="design/icons/A+.png" alt="">
+                    </button>
+                    <button class="font-settings-btn small-btn" onclick="onSetFontSize(-10)">
+                        <img src="design/icons/A-.png" alt="">
+                    </button>
+                    <button class="font-settings-btn small-btn" onclick="onSetAlignment('left')">
+                        <img src="design/icons/align-left.png" alt="">
+                    </button>
+                    <button class="font-settings-btn small-btn" onclick="onSetAlignment('center')">
+                        <img src="design/icons/align-center.png" alt="">
+                    </button>
+                    <button class="font-settings-btn small-btn" onclick="onSetAlignment('right')">
+                        <img src="design/icons/align-right.png" alt="">
+                    </button>
+                </div>
+
+                <div class="flex justify-center  align-center">
+                    <select onchange="onSetFontFamily(this.value)" class="font-style-select input"
+                        name="font-style">
+                    </select>
+                    <div class="clr-btn-container">
+                        <input class="small-btn stroke-input" onchange="onSetStrokeColor(this.value)" type="color" value="#ffffff">
+                        <button class="font-settings-btn small-btn input-clr-btn stroke-btn" onclick="onOpenStrokeClrPicker()">
+                            <img src="design/icons/s.png" alt="">
+                        </button>
+                    </div>
+                    <div class="clr-btn-container">
+                        <input class="small-btn fill-input" onchange="onSetFillColor(this.value)" type="color" value="#ffffff">
+                        <button class="font-settings-btn small-btn input-clr-btn fill-btn" onclick="onOpenFillClrPicker()">
+                            <img src="design/icons/palette.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emojis-carousel-container">
+                <div class="slide flex justify-center align-center">
+                    <button onclick="onAddEmoji(this)">&#128512</button>
+                    <button onclick="onAddEmoji(this)">&#128518</button>
+                    <button onclick="onAddEmoji(this)">&#128520</button>
+                    <button onclick="onAddEmoji(this)">&#128526</button>
+                </div>
+            </div>
+            <button class="download-btn">
+                <a href="#" class="btn" onclick="onDownload(this)" download="my-meme.jpg">Download</a>
+            </button>
+        </div>
+    </section>
+
+    <footer>
+
+    </footer>
+
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/main.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    </body>
