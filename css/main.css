@@ -1,17 +1,17 @@
 /* FONTS */
 @font-face {
     font-family: poppins-light;
-    src: url(/design/fonts/Poppins/Poppins-Light.ttf);
+    src: url(../design/fonts/Poppins/Poppins-Light.ttf);
 }
 
 @font-face {
     font-family: poppins-medium;
-    src: url(/design/fonts/Poppins/Poppins-Medium.ttf);
+    src: url(../design/fonts/Poppins/Poppins-Medium.ttf);
 }
 
 @font-face {
     font-family: poppins-extra-Bold;
-    src: url(/design/fonts/Poppins/Poppins-ExtraBold.ttf);
+    src: url(../design/fonts/Poppins/Poppins-ExtraBold.ttf);
 }
 
 /* @font-face {
