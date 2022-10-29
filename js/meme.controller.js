@@ -13,7 +13,6 @@ function initMeme() {
   document.querySelector('.gallery').classList.add('hide')
   document.querySelector('.editor').classList.add('flex')
   document.querySelector('.editor').classList.remove('hide')
-  resizeCanvas()
   addListeners()
   renderMeme()
 }
@@ -35,8 +34,6 @@ function renderMeme() {
       gCtx.textAlign = align
       const x = setXByAlignment(align, txt)
       const y = setYByLineIdx(idx, size) + size + 10
-
-      // let y = (idx === 0) ? 50 : gElCanvas.height - 50
       line.pos = {
         x: x,
         y: y
@@ -55,7 +52,7 @@ function renderSelectedLineFocus() {
   const { txt, align, size } = lines[selectedLineIdx]
   const width = gCtx.measureText(txt).width
   const x = setXByAlignment(align) - width / 2 - 20
-  let y = setYByLineIdx(selectedLineIdx, size)
+  const y = setYByLineIdx(selectedLineIdx, size)
 
   gCtx.beginPath()
   gCtx.rect(x, y, width + 40, size + 20);
@@ -186,20 +183,12 @@ function onDownload(elLink) {
   elLink.href = imgContent
 }
 
-function resizeCanvas() {
-  const elContainer = document.querySelector('.canvas-container')
-  gElCanvas.width = elContainer.offsetWidth
-  gElCanvas.height = elContainer.offsetHeight
-}
-
 // ADD LISTENERS
 function addListeners() {
   addMouseListeners()
   addTouchListeners()
   //Listen for resize ev 
   window.addEventListener('resize', () => {
-    resizeCanvas()
-    // renderCanvas()
   })
 }
 
@@ -229,11 +218,9 @@ function getEvPos(ev) {
 }
 
 function onDown(ev) {
-  //Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
   if (!isTxtClicked(pos)) return
 
   gIsCanvasClicked = false
-  document.body.style.cursor = 'grabbing'
   renderMeme()
 }
