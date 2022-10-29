@@ -11,6 +11,7 @@
 
 <body onload="onInit()">
     <div class="main-screen full" onclick="toggleMenu()"></div>
+    <div class="modal-screen full" onclick="toggleModal()"></div>
     <div class="main-container">
         <!-- Header -->
         <header class="flex align-center">
@@ -21,7 +22,7 @@
                         <button onclick="onGoToGallery()">Gallery</button>
                     </li>
                     <li>
-                        <button>My Mems</button>
+                        <button>About</button>
                     </li>
                 </ul>
                 </ul>
@@ -30,23 +31,20 @@
         </header>
         <!-- Gallery -->
         <section class="gallery">
-            <div class="filters">
+            <div class="filters flex align-center">
 
-                <input class="txt-input" type="text" placeholder="Search">
-                <div class="flex justify-center align-center">
-                    <div class="keywords flex justify-center">
-                        <button>Funny</button>
-                        <button>Animal</button>
-                        <button>Men</button>
-                        <button>Women</button>
-                        <button>Comic</button>
-                        <button>Smile</button>
+                <input oninput="onSearchByKeyword(this.value)" class="txt-input" type="text" placeholder="Search">
+                <div class="keywords-container flex justify-center align-center">
+                    <div class="keywords flex justify-center align-center">
                     </div>
-                    <button class="more-btn">More</button>
+                    <button class="more-btn" onclick="onOpenKeywordsModal()">More</button>
+                    <div class="keywords keywords-modal justify-center align-center hide">
+                    </div>
                 </div>
             </div>
             <div class="images">
             </div>
+
         </section>
     </div>
 
@@ -88,18 +86,21 @@
                 </div>
 
                 <div class="flex justify-center  align-center">
-                    <select onchange="onSetFontFamily(this.value)" class="font-style-select input"
-                        name="font-style">
+                    <select onchange="onSetFontFamily(this.value)" class="font-style-select input" name="font-style">
                     </select>
                     <div class="clr-btn-container">
-                        <input class="small-btn stroke-input" onchange="onSetStrokeColor(this.value)" type="color" value="#ffffff">
-                        <button class="font-settings-btn small-btn input-clr-btn stroke-btn" onclick="onOpenStrokeClrPicker()">
+                        <input class="small-btn stroke-input" onchange="onSetStrokeColor(this.value)" type="color"
+                            value="#ffffff">
+                        <button class="font-settings-btn small-btn input-clr-btn stroke-btn"
+                            onclick="onOpenStrokeClrPicker()">
                             <img src="design/icons/s.png" alt="">
                         </button>
                     </div>
                     <div class="clr-btn-container">
-                        <input class="small-btn fill-input" onchange="onSetFillColor(this.value)" type="color" value="#ffffff">
-                        <button class="font-settings-btn small-btn input-clr-btn fill-btn" onclick="onOpenFillClrPicker()">
+                        <input class="small-btn fill-input" onchange="onSetFillColor(this.value)" type="color"
+                            value="#ffffff">
+                        <button class="font-settings-btn small-btn input-clr-btn fill-btn"
+                            onclick="onOpenFillClrPicker()">
                             <img src="design/icons/palette.png" alt="">
                         </button>
                     </div>
@@ -120,12 +121,8 @@
         </div>
     </section>
 
-    <footer>
-
-    </footer>
-
     <script src="js/services/meme.service.js"></script>
-    <script src="js/main.controller.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/services/gallery.service.js"></script>
     <script src="js/gallery.controller.js"></script>
-    </body>
+</body>

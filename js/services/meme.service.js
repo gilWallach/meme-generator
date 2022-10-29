@@ -1,11 +1,5 @@
 'use strict'
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
-]
-
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -20,19 +14,7 @@ var gMeme = {
             pos: {
                 x: 0,
                 y: 0
-            }
-        },
-        {
-            txt: 'Hi',
-            size: 38,
-            align: 'center',
-            color: '#ffffff',
-            stroke: '#000',
-            font: 'Impact',
-            pos: {
-                x: 0,
-                y: 0
-            }
+            },
         },
     ]
 }
@@ -85,7 +67,7 @@ function switchLine() {
 }
 
 function addLine() {
-    if(gMeme.lines.length < 3 ) gMeme.lines.push(_createLine())
+    if (gMeme.lines.length < 3) gMeme.lines.push(_createLine())
 }
 function deleteLine() {
     const { lines, selectedLineIdx } = gMeme
@@ -126,6 +108,6 @@ function _createLine() {
         pos: {
             x: 0,
             y: 0
-        }
+        },
     }
 }

@@ -27,7 +27,7 @@ function renderMeme() {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     //  render txt 
     lines.forEach((line, idx) => {
-      const { txt, size, align, color, stroke, font} = line
+      const { txt, size, align, color, stroke, font } = line
       gCtx.lineWidth = 5
       gCtx.fillStyle = color
       gCtx.strokeStyle = stroke
@@ -35,7 +35,7 @@ function renderMeme() {
       gCtx.textAlign = align
       const x = setXByAlignment(align, txt)
       const y = setYByLineIdx(idx, size) + size + 10
-      
+
       // let y = (idx === 0) ? 50 : gElCanvas.height - 50
       line.pos = {
         x: x,
@@ -76,7 +76,7 @@ function renderFontsOptions() {
 function setXByAlignment(align, txt) {
   let x
   switch (align) {
-    case 'left': x =  gCtx.measureText(txt).width / 2
+    case 'left': x = gCtx.measureText(txt).width / 2
       break
     case 'center': x = gElCanvas.width / 2
       break
@@ -86,14 +86,14 @@ function setXByAlignment(align, txt) {
   return x
 }
 
-function setYByLineIdx(idx, size){
+function setYByLineIdx(idx, size) {
   let y
   switch (idx) {
-    case idx = 0: y  = size - 20
+    case idx = 0: y = size - 20
       break
-      case idx = 1: y = gElCanvas.height - size - 40
-        break
-    case idx = 2: y = gElCanvas.height / 2 -size
+    case idx = 1: y = gElCanvas.height - size - 40
+      break
+    case idx = 2: y = gElCanvas.height / 2 - size
       break
   }
   return y
@@ -109,13 +109,13 @@ function onClearInput() {
 }
 
 function onSetFillColor(color) {
-  console.log('lll')
-  console.log(color)
   setFillColor(color)
+  renderMeme()
 }
 
 function onSetStrokeColor(color) {
   setStrokeColor(color)
+  renderMeme()
 }
 
 function onSetFontSize(diff) {
@@ -129,7 +129,7 @@ function onSwitchLine() {
   renderMeme()
 }
 
-function onAddLine(){
+function onAddLine() {
   addLine()
   renderMeme()
 }
@@ -137,7 +137,7 @@ function onAddLine(){
 function onDeleteLine() {
   deleteLine()
   gIsCanvasClicked = true
-  let {selectedLineIdx} = gMeme
+  let { selectedLineIdx } = gMeme
   selectedLineIdx = null
   renderMeme()
 }
@@ -152,11 +152,11 @@ function onSetFontFamily(fontFamily) {
   renderMeme()
 }
 
-function onOpenFillClrPicker(){
+function onOpenFillClrPicker() {
   document.querySelector('.fill-input').click()
 }
 
-function onOpenStrokeClrPicker(){
+function onOpenStrokeClrPicker() {
   document.querySelector('.stroke-input').click()
 }
 
@@ -173,11 +173,11 @@ function onCanvasClicked(ev) {
     renderMeme()
     renderSelectedLineFocus()
   }
-  else{
+  else {
     gIsCanvasClicked = true
-    let {selectedLineIdx} = getMeme()
+    let { selectedLineIdx } = getMeme()
     selectedLineIdx = null
-  }  
+  }
   renderMeme()
 }
 
@@ -204,15 +204,11 @@ function addListeners() {
 }
 
 function addMouseListeners() {
-  // gElCanvas.addEventListener('mousemove', onMove)
   gElCanvas.addEventListener('mousedown', onDown)
-  // gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
-  // gElCanvas.addEventListener('touchmove', onMove)
   gElCanvas.addEventListener('touchstart', onDown)
-  // gElCanvas.addEventListener('touchend', onUp)
 }
 
 // HANDLE LISTENER EVENTS
@@ -236,10 +232,8 @@ function onDown(ev) {
   //Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
   if (!isTxtClicked(pos)) return
+
   gIsCanvasClicked = false
+  document.body.style.cursor = 'grabbing'
   renderMeme()
-  // setCircleDrag(true)
-  // //Save the pos we start from 
-  // gStartPos = pos
-  // document.body.style.cursor = 'grabbing'
 }
