@@ -36,7 +36,7 @@ function getImgsForDisplay() {
 }
 
 function setKeyWord(chars) {
-    gCurrKeyword = chars
+    gCurrKeyword = chars.toLowerCase()
 }
 
 function setKeywordSearchCountMap(chars) {

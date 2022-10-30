@@ -1,6 +1,7 @@
 'use strict'
 function onInit() {
     renderGallery()
+    renderSearchDataList()
 }
 
 function renderGallery() {
@@ -12,6 +13,17 @@ function renderGallery() {
                     </a>`
     )
     document.querySelector('.images').innerHTML = strHTML.join('')
+}
+
+function renderSearchDataList(){
+    const keywordSearchCountMap = getKeywordSearchCountMap()
+    let strHTML = ``
+    for (const key in keywordSearchCountMap){
+        strHTML += `<option value="${key}">`
+    }
+    document.querySelector('.data-list-search').innerHTML = strHTML
+    document.querySelector('.data-list-search').setAttribute('autocomplete', 'on')
+
 }
 
 function getKeyWordsStrHTML(amount){

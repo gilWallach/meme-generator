@@ -11,10 +11,8 @@ var gMeme = {
             color: '#ffffff',
             stroke: '#000',
             font: 'Impact',
-            pos: {
-                x: 0,
-                y: 0
-            },
+            pos: null,
+            isDrag: false
         },
     ]
 }
@@ -53,8 +51,8 @@ function setFontFamily(fontFamily) {
 }
 
 function addEmoji(emojiNum) {
-    const { lines, selectedLineIdx } = gMeme
-    lines[selectedLineIdx].txt += ` ${emojiNum}`
+    const line = getSelectedLine()
+    line.txt += ` ${emojiNum}`
 }
 // ------------------ //
 function switchLine() {
@@ -68,6 +66,7 @@ function switchLine() {
 
 function addLine() {
     if (gMeme.lines.length < 3) gMeme.lines.push(_createLine())
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 function deleteLine() {
     const { lines, selectedLineIdx } = gMeme
@@ -91,9 +90,30 @@ function isTxtClicked(clickedPos) {
     return isClicked
 }
 
+function setTxtDrag(line, isDrag){
+    line.isDrag = isDrag
+}
+
+function moveTxt(dx, dy){
+    const line = getSelectedLine()
+    line.pos.x += dx
+    line.pos.y += dy
+}
+
+
+function setLinePos(line, pos){
+    line.pos = pos
+}
+
+
 // -----GET FUNCTIONS----- //
 function getMeme() {
     return gMeme
+}
+
+function getSelectedLine(){
+    const {selectedLineIdx} = gMeme
+    return gMeme.lines[selectedLineIdx]
 }
 
 // LOCAL FUNCTIONS
@@ -105,9 +125,7 @@ function _createLine() {
         color: '#ffffff',
         stroke: '#000',
         font: 'Impact',
-        pos: {
-            x: 0,
-            y: 0
-        },
+        pos: null,
+        isDrag: false
     }
 }

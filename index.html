@@ -32,8 +32,9 @@
         <!-- Gallery -->
         <section class="gallery">
             <div class="filters flex align-center">
+                <input list="search" id="search" oninput="onSearchByKeyword(this.value)" placeholder="Search" autocomplete="off">    
+                <datalist id="search" class="data-list-search"></datalist>
 
-                <input oninput="onSearchByKeyword(this.value)" class="txt-input" type="text" placeholder="Search">
                 <div class="keywords-container flex justify-center align-center">
                     <div class="keywords flex justify-center align-center">
                     </div>
@@ -93,7 +94,7 @@
                             value="#ffffff">
                         <button class="font-settings-btn small-btn input-clr-btn stroke-btn"
                             onclick="onOpenStrokeClrPicker()">
-                            <img src="../design/icons/s.png" alt="">
+                            <img src="design/icons/s.png" alt="">
                         </button>
                     </div>
                     <div class="clr-btn-container">
@@ -101,7 +102,7 @@
                             value="#ffffff">
                         <button class="font-settings-btn small-btn input-clr-btn fill-btn"
                             onclick="onOpenFillClrPicker()">
-                            <img src="../design/icons/palette.png" alt="">
+                            <img src="design/icons/palette.png" alt="">
                         </button>
                     </div>
                 </div>

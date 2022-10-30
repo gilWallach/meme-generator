@@ -14,11 +14,6 @@
     src: url(../design/fonts/Poppins/Poppins-ExtraBold.ttf);
 }
 
-/* @font-face {
-    font-family: emojis;
-    src: url("/design/fonts/GoogleEmojis/GoogleEmojis-Regular.ttf");
-} */
-
 /* COLORS */
 :root {
     --clr-primary: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
@@ -44,15 +39,17 @@ body {
 
 header {
     position: fixed;
+    justify-content: space-between;
     top: 15px;
     left: 15px;
     right: 15px;
     height: 73px;
-    justify-content: space-around;
     font-family: poppins-medium;
     font-size: 22px;
+    padding: 0 50px;
     border-radius: 370px;
-    background: var(--clr-primary)
+    background: var(--clr-primary);
+    z-index: 10;
 }
 
 button {
@@ -128,9 +125,10 @@ section {
 }
 
 
-/* COMPONENT */
+/* COMPONENTS */
 /* GALLERY */
 .gallery .filters {
+    position: relative;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 30px;
@@ -141,17 +139,12 @@ section {
     font-family: poppins-light;
     font-size: 22px;
     flex-basis: 35%;
-    margin-inline-end: 15px;
-    margin-bottom: 15px;
+    margin: 0 15px 15px 0;
+    padding: 20px 50px;
     border: none;
     border-radius: 30px;
     color: var(--clr1);
     background-color: var(--clr4);
-}
-
-.gallery .filters .txt-input {
-    margin: 0 15px 15px;
-    padding: 20px 50px;
 }
 
 .gallery .filters .keywords-container {
@@ -206,7 +199,8 @@ body.modal-open .gallery .filters .keywords-modal {
     position: absolute;
 }
 
-.modal-screen, .main-screen {
+.modal-screen,
+.main-screen {
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 50%);
@@ -222,7 +216,7 @@ body.modal-open .modal-screen {
     pointer-events: auto;
 }
 
-body.modal-open .modal-screen{
+body.modal-open .modal-screen {
     cursor: pointer;
     opacity: 1;
     pointer-events: auto;
@@ -403,7 +397,7 @@ section.editor {
     background-color: #8f44bb;
     box-shadow: 1px 5px 0 #7f3ea4, inset 0 5px 0 #ab52de;
     padding: 10px;
-    margin: 10px;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -421,6 +415,10 @@ section.editor {
 @media (max-width: 780px) {
     section.gallery {
         padding: 30px 10px;
+    }
+
+    header {
+        padding: 0 10px;
     }
 
     header .logo {
@@ -454,13 +452,14 @@ section.editor {
     body.menu-open .main-nav ul {
         transform: translateY(0%);
     }
+
     body.menu-open .main-screen {
         cursor: pointer;
         opacity: 1;
         pointer-events: auto;
     }
-    
-    body.menu-open .main-screen{
+
+    body.menu-open .main-screen {
         cursor: pointer;
         opacity: 1;
         pointer-events: auto;
@@ -519,6 +518,15 @@ section.editor {
 
     .gallery .filters {
         justify-content: center;
+    }
+
+    .gallery .filters input {
+        justify-content: center;
+        margin-inline-end: 0;
+    }
+
+    .gallery .filters .keywords{
+        margin-inline-end: 0;
     }
 
     .gallery .more-btn {
