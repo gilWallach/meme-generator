@@ -517,12 +517,12 @@ section.editor {
     }
 
     .gallery .filters {
-        justify-content: center;
+        display: block;
     }
 
     .gallery .filters input {
-        justify-content: center;
-        margin-inline-end: 0;
+        /* display: block; */
+        width: 100%;
     }
 
     .gallery .filters .keywords{

@@ -63,10 +63,9 @@ function renderSelectedLineFocus() {
   const width = gCtx.measureText(txt).width
   let x
   let y = pos.y - size - 10
-  if (align === 'center' || isDrag) x = pos.x - width / 2 - 20
-
+  if (align === 'right') x = pos.x - width - 20
   else if (align === 'left') x = pos.x - 20
-  else x = pos.x - width -20
+  else x = pos.x - width / 2 - 20
 
   gCtx.beginPath()
   gCtx.rect(x, y, width + 40, size + 20);
@@ -159,7 +158,6 @@ function onDeleteLine() {
 function onSetAlignment(alignTo) {
   setAlignment(alignTo)
   const line = getSelectedLine()
-  console.log(line)
   const { txt, size } = line
   const { selectedLineIdx } = getMeme()
   setDefaultPos(line, alignTo, txt, selectedLineIdx, size)
@@ -256,13 +254,15 @@ function onDown(ev) {
 
 function onMove(ev) {
   const line = getSelectedLine()
+  console.log(line.isDrag)
   const { isDrag } = line
+  console.log(isDrag)
   if (!isDrag) return
-  
+
   const pos = getEvPos(ev)
   const dx = pos.x - line.pos.x
   const dy = pos.y - line.pos.y
-  
+
   moveTxt(dx, dy)
   renderMeme()
 }
