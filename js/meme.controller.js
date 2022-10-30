@@ -254,9 +254,7 @@ function onDown(ev) {
 
 function onMove(ev) {
   const line = getSelectedLine()
-  console.log(line.isDrag)
   const { isDrag } = line
-  console.log(isDrag)
   if (!isDrag) return
 
   const pos = getEvPos(ev)

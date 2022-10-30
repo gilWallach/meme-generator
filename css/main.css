@@ -245,6 +245,7 @@ body.modal-open .modal-screen {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: 200px;
     gap: 20px;
+    
 }
 
 .gallery .images img {
